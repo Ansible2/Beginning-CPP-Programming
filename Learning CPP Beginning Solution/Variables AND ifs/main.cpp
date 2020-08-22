@@ -64,7 +64,7 @@ int main() {
 	double tax = totalCostBeforeTax * taxRate;
 	double totalCostAfterTax = totalCostBeforeTax + tax;
 
-	cout << "Estimate shiiiiiit:" << endl;
+	cout << "Estimate shooooot:" << endl;
 	cout << "Number of small rooms: " << numSmallRooms << endl;
 	cout << "Number of large rooms: " << numLargeRooms << endl;
 	cout << "Cost of small rooms: " << smallRoomCost << endl;
