@@ -2,10 +2,102 @@
 #include <algorithm>
 #include <vector>
 #include <iomanip>
+
 using namespace std;
 
 bool IsNotNegative99(int i) {
 	return (i != -99);
+}
+
+
+void printNumbers(vector<int> myTempVector) {
+	if (myTempVector.size() > 0) {
+		cout << "[";
+		for (int currVal : myTempVector) {
+			cout << " " << currVal;
+		}
+		cout << " ]";
+	} else {
+		cout << "[] - The List Is Empty" << endl;
+	}
+};
+
+vector<int> addNumber(vector<int> myTempVector) {
+	cout << "Enter a new number: ";
+	int newNumber{};
+	cin >> newNumber;
+	
+	myTempVector.push_back(newNumber);
+	cout << "\n" << newNumber << " was added" << endl;
+
+	return myTempVector;
+}
+
+void calculateAverage(vector<int> myTempVector) {
+	
+	int sum{};
+	for (int currVal : myTempVector) {
+		sum += currVal;
+	}
+
+	int myAverage = sum / myTempVector.size();
+	
+	cout << "The average is: " << myAverage << endl;
+}
+
+
+void mainPrompt(vector<int> myVector) {
+	cout << "P - Print Numbers" << endl;
+	cout << "A - Add A Number" << endl;
+	cout << "M - Display Mean of The Numbers" << endl;
+	cout << "S - Display The Smallest Number" << endl;
+	cout << "L - Display The Largest Number" << endl;
+	cout << "Q - Quit" << endl;
+
+	cout << "User Input: ";
+	
+	char input{};
+	cin >> input;
+	if (input == 'P' or input == 'p') {
+		printNumbers(myVector);
+	}
+	else if (input == 'A' or input == 'a') {
+		myVector = addNumber(myVector);
+	}
+	else if (input == 'M' or input == 'm') {
+		if (myVector.size() < 1) {
+			cout << "No data to process for average." << endl;
+		}
+		else {
+			calculateAverage(myVector);
+		}
+	}
+	else if (input == 'S' or input == 's') {
+		if (myVector.size() < 1) {
+			cout << "No data to process." << endl;
+		}
+		else {
+			int smallestElement = *min_element(myVector.begin(), myVector.end());
+			cout << "The smallest element is: " << smallestElement << endl;
+		}
+	}
+	else if (input == 'L' or input == 'l') {
+		if (myVector.size() < 1) {
+			cout << "No data to process." << endl;
+		}
+		else {
+			int largestElement = *max_element(myVector.begin(), myVector.end());
+			cout << "The Largest element is: " << largestElement << endl;
+		}
+	}
+	else if (input == 'Q' or input == 'q') {
+		cout << "Quitting..." << endl;
+		terminate();
+	}
+	else {
+		cout << "Invalid input - Try again" << endl;
+	}
+	mainPrompt(myVector);
 }
 
 int main() {
@@ -221,8 +313,10 @@ int main() {
 	   for (size_t j=i+1; j< vec.size(); ++j)
 			sum = sum + vec.at(i) * vec.at(j);
 */
-
-
+// section Challenge
+	vector<int> startVector{};
+	
+	mainPrompt(startVector);
 
 	return 0;
 }
