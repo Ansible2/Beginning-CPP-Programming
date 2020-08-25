@@ -16,9 +16,9 @@ void printNumbers(vector<int> myTempVector) {
 		for (int currVal : myTempVector) {
 			cout << " " << currVal;
 		}
-		cout << " ]";
+		cout << " ]" << endl << endl;
 	} else {
-		cout << "[] - The List Is Empty" << endl;
+		cout << "[] - The List Is Empty" << endl << endl;
 	}
 };
 
@@ -28,7 +28,7 @@ vector<int> addNumber(vector<int> myTempVector) {
 	cin >> newNumber;
 	
 	myTempVector.push_back(newNumber);
-	cout << "\n" << newNumber << " was added" << endl;
+	cout << "\n" << newNumber << " was added" << endl << endl;
 
 	return myTempVector;
 }
@@ -40,9 +40,9 @@ void calculateAverage(vector<int> myTempVector) {
 		sum += currVal;
 	}
 
-	int myAverage = sum / myTempVector.size();
+	double myAverage = static_cast<double>(sum) / myTempVector.size();
 	
-	cout << "The average is: " << myAverage << endl;
+	cout << "The average is: " << myAverage << endl << endl;
 }
 
 
@@ -58,6 +58,9 @@ void mainPrompt(vector<int> myVector) {
 	
 	char input{};
 	cin >> input;
+
+	bool doQuit = false;
+	
 	if (input == 'P' or input == 'p') {
 		printNumbers(myVector);
 	}
@@ -66,7 +69,7 @@ void mainPrompt(vector<int> myVector) {
 	}
 	else if (input == 'M' or input == 'm') {
 		if (myVector.size() < 1) {
-			cout << "No data to process for average." << endl;
+			cout << "No data to process for average." << endl << endl;
 		}
 		else {
 			calculateAverage(myVector);
@@ -78,7 +81,7 @@ void mainPrompt(vector<int> myVector) {
 		}
 		else {
 			int smallestElement = *min_element(myVector.begin(), myVector.end());
-			cout << "The smallest element is: " << smallestElement << endl;
+			cout << "The smallest element is: " << smallestElement << endl << endl;
 		}
 	}
 	else if (input == 'L' or input == 'l') {
@@ -87,17 +90,20 @@ void mainPrompt(vector<int> myVector) {
 		}
 		else {
 			int largestElement = *max_element(myVector.begin(), myVector.end());
-			cout << "The Largest element is: " << largestElement << endl;
+			cout << "The Largest element is: " << largestElement << endl << endl;
 		}
 	}
 	else if (input == 'Q' or input == 'q') {
 		cout << "Quitting..." << endl;
-		terminate();
+		doQuit = true;
 	}
 	else {
-		cout << "Invalid input - Try again" << endl;
+		cout << "Invalid input - Try again" << endl << endl;
 	}
-	mainPrompt(myVector);
+
+	if (!doQuit) {
+		mainPrompt(myVector);
+	}
 }
 
 int main() {
