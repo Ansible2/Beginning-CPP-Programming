@@ -107,33 +107,33 @@ void mainPrompt(vector<int> myVector) {
 }
 
 int main() {
-/*
-	for (int i{}; i < 5; i++) {
-		cout << i << endl;
-	};
-*/
-/*
-	for (int i{}, j{}; i < 5; ++i , j++) {
-		cout << i << " : " << j << endl;
-	};
-*/
-/*
-	vector<int> nums{ 1,2,3,4,5 };
-
-	for (unsigned int i{}; i < (nums.size()); i++) {
-		cout << nums.at(i) << endl;
-	};
-*/
-/*
-	int sum{};
-	for (int i{ 1 }; i <= 15; i++) {
-		if ((i % 2) != 0) {
-			sum += i;
-			cout << i << " : " << sum << endl;
+	/*
+		for (int i{}; i < 5; i++) {
+			cout << i << endl;
 		};
-	};
-	//cout << sum << endl;
-*/
+	*/
+	/*
+		for (int i{}, j{}; i < 5; ++i , j++) {
+			cout << i << " : " << j << endl;
+		};
+	*/
+	/*
+		vector<int> nums{ 1,2,3,4,5 };
+
+		for (unsigned int i{}; i < (nums.size()); i++) {
+			cout << nums.at(i) << endl;
+		};
+	*/
+	/*
+		int sum{};
+		for (int i{ 1 }; i <= 15; i++) {
+			if ((i % 2) != 0) {
+				sum += i;
+				cout << i << " : " << sum << endl;
+			};
+		};
+		//cout << sum << endl;
+	*/
 
 	// ranged based for loop
 /*
@@ -183,7 +183,7 @@ int main() {
 	cout << count;
 */
 
-	// While Loop
+// While Loop
 /*
 	cout << "Enter a poitive integer to start the countdown: ";
 	int userEnteredNumber{};
@@ -214,7 +214,7 @@ int main() {
 /*
 	int count{};
 	bool foundNegative99 = false;
-	
+
 	while (!foundNegative99) {
 		if (vec.at(count) != -99) {
 			++count;
@@ -226,7 +226,7 @@ int main() {
 	cout << count;
 */
 
-	// Do While
+// Do While
 /*
 	char userInput{};
 
@@ -242,7 +242,7 @@ int main() {
 		switch (userInput) {
 			case '1': {
 				cout << "Did 1" << endl;
-			} 
+			}
 				break;
 			case '2': {
 				cout << "Did 2" << endl;
@@ -266,7 +266,7 @@ int main() {
 	cout << "Exited Program" << endl;
 */
 
-	// continue & break
+// continue & break
 /*
 	char userInput{};
 	while (true) {
@@ -287,21 +287,30 @@ int main() {
 			cout << endl;
 		}
 	}
-*/	
-/*
-	// challenge
-	// add together every possible multiplication pair of a vector's ints
-	// if only 1 int is present, should return 0
-	vector<int> vec{ 1,2,3 };
+*/
+
+
+
+
+
+// challenge
+// add together every possible multiplication pair of a vector's ints
+// if only 1 int is present, should return 0
+
+
+	//vector<int> vec{ 1,2,3 };
+	//int sum{};
+
 	
-	int sum{};
+	
+/*
 	for (int currVal : vec) {
-		
+
 		for (unsigned int j{}; j < vec.size(); j++) {
 			// don't want to multiply something by itself
 			if (j != 0) {
 				int myPlus = vec.at(0) * vec.at(j);
-				//cout << currVal << endl; just using currVal so my IDE doesn't have a warning
+				cout << currVal << endl; //just using currVal so my IDE doesn't have a warning
 				sum += myPlus;
 				cout << "j is: " << j << endl << endl;
 				cout << vec.at(0) << '*' << vec.at(j) << '=' << myPlus << endl << endl;
@@ -313,16 +322,26 @@ int main() {
 	}
 	cout << sum;
 */
+
 /*
 	// the easy way
-	for (size_t i=0; i< vec.size(); ++i)
-	   for (size_t j=i+1; j< vec.size(); ++j)
+	for (size_t i = 0; i < vec.size(); ++i) // size_t is a type of int that adapts its size to fit
+		for (size_t j = i + 1; j < vec.size(); ++j)
 			sum = sum + vec.at(i) * vec.at(j);
-*/
-// section Challenge
-	vector<int> startVector{};
 	
+	cout << sum;
+*/
+
+	
+
+// section Challenge
+
+	vector<int> startVector{};
+
 	mainPrompt(startVector);
 
 	return 0;
+
+
+	
 }
