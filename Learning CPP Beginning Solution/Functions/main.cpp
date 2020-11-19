@@ -28,8 +28,8 @@ using namespace std;
 
 	// params
 	/*
-		CPP has a pass-by-value with its params (similar to SQF in some cases) by default.
-		meaning that it will get the value of the input param and copy it meaning double the storage.
+		CPP has a pass-by-value with its params (similar to SQF in some cases such as objects, groups, arrays) by default.
+		meaning that it will get the value of the input param and copy it to a new variable or address in memory (so doubling storage)
 
 		It also means that changes to the made to the variable inside the function are to the copy of the variable and not
 		directly to the input variable. (i'd imagine this is why pointers exist)
@@ -57,6 +57,23 @@ using namespace std;
 			int myFunction(int a = 1, int b = 0); // legal
 			int myFunction(int a, int b = 0); // legal
 			int myFunction(int a = 0, int b); // illegal
+
+
+
+
+			PASS BY REF
+			To pass by ref (copy variable to make direct changes), simply add the address (&) sign to the param in function declaration:
+			
+			void changeNumTo2(int& a){
+				a = 2;
+			};
+			int main(){
+				int myNum{1};
+				cout << myNum << endl;
+				
+				changeNumTo2(myNum);
+				cout << myNum;
+			};
 	*/
 
 	// Overloading
@@ -81,6 +98,24 @@ using namespace std;
 				addNumbers(2.0,2.0); // returns double
 			};
 	*/
+
+	// variable scopes
+/*
+	Scopes are fairly straight forward and what you're use to. 
+	Globals are defined outside of the main function.
+
+	One thing of note is that "static" command for local vars.
+	It will init a variable once and maintain its value between calls:
+
+	// every time this function is called, num is saved at the end
+	// first time, num becomes 1
+	// second, num becomes 2
+	// and so on
+	void myStaticNum {
+		static int num {};
+		num += 1;
+	}
+*/
 
 
 
@@ -131,11 +166,14 @@ int main() {
 		
 			printArray(const int myArray[]); // myArray can't be changed
 	*/
+/*
 	int myScores[]{ 100,99,98,90,86,84 };
 
 	printArray(myScores, 6);
 	setArray(myScores, 6, 0);
 	printArray(myScores, 6);
+*/
+
 
 	return 0;
 };
