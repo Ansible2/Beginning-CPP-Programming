@@ -59,10 +59,8 @@ using namespace std;
 			int myFunction(int a = 0, int b); // illegal
 
 
-
-
 			PASS BY REF
-			To pass by ref (copy variable to make direct changes), simply add the address (&) sign to the param in function declaration:
+			To pass by ref (get the actual variable to make direct changes), simply add the address (&) sign to the param in function declaration:
 			
 			void changeNumTo2(int& a){
 				a = 2;
@@ -117,6 +115,17 @@ using namespace std;
 	}
 */
 
+	// inline functions
+/*
+	The inline keyword can be used for defineing quick inline functions to use.
+
+	// Example:
+	inline void printPie(){
+		cout << "pie" << endl;
+	};
+
+	However, most compilers will already automatically do this.
+*/
 
 
 void printArray(const int myArray[], size_t sizeOfMyArray);
@@ -157,15 +166,15 @@ int main() {
 */
 
 	// Arrays
-	/*
-		Arrays are by default NOT pass-by-reference. Since their objects are just a reference to the first
-		value's point in memory, you can actually modify their contents inside a function. Secondly, you can't
-		get the size of an array as it does not store that information in its name.
+/*
+	Arrays are by default NOT pass-by-reference. Since their objects are just a reference to the first
+	value's point in memory, you can actually modify their contents inside a function. Secondly, you can't
+	get the size of an array as it does not store that information in its name.
 
-		You can use "const" on the param definition to avoid modifacations of the array:
+	You can use "const" on the param definition to avoid modifacations of the array:
 		
-			printArray(const int myArray[]); // myArray can't be changed
-	*/
+		printArray(const int myArray[]); // myArray can't be changed
+*/
 /*
 	int myScores[]{ 100,99,98,90,86,84 };
 
