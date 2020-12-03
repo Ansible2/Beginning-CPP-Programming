@@ -9,6 +9,7 @@ bool IsNotNegative99(int i) {
 	return (i != -99);
 }
 
+// section 9 challenge
 
 void printNumbers(vector<int> myTempVector) {
 	if (myTempVector.size() > 0) {

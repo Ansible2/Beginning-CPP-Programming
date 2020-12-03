@@ -2,8 +2,127 @@
 #include <cstdlib>
 #include <ctime>
 #include <array>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+
+
+
+
+void printNumbers(const vector<int> &myVector) {
+	if (myVector.size() > 0) {
+		cout << "[";
+		for (int currVal : myVector) {
+			cout << " " << currVal;
+		}
+		cout << " ]" << endl << endl;
+	}
+	else {
+		cout << "[] - The List Is Empty" << endl << endl;
+	}
+};
+
+void addNumber(vector<int> &myVector) {
+	cout << "Enter a new number: ";
+	int newNumber{};
+	cin >> newNumber;
+
+	myVector.push_back(newNumber);
+	cout << "\n" << newNumber << " was added" << endl << endl;
+}
+
+void calculateAverage(const vector<int> &myVector) {
+
+	if (myVector.size() < 1) {
+		cout << "No data to process for average." << endl << endl;
+	}
+	else {
+
+		int sum{};
+		for (int currVal : myVector) {
+			sum += currVal;
+		}
+
+		double myAverage = static_cast<double>(sum) / myVector.size();
+
+		cout << "The average is: " << myAverage << endl << endl;
+	}
+}
+
+void findSmallest(const vector<int> &myVector) {
+	if (myVector.size() < 1) {
+		cout << "No data to process." << endl;
+	}
+	else {
+		int smallestElement = *min_element(myVector.begin(), myVector.end());
+		cout << "The smallest element is: " << smallestElement << endl << endl;
+	}
+}
+
+void findLargest(const vector<int>& myVector) {
+	if (myVector.size() < 1) {
+		cout << "No data to process." << endl;
+	}
+	else {
+		int largestElement = *max_element(myVector.begin(), myVector.end());
+		cout << "The Largest element is: " << largestElement << endl << endl;
+	}
+}
+
+void showMenu() {
+	cout << "P - Print Numbers" << endl;
+	cout << "A - Add A Number" << endl;
+	cout << "M - Display Mean of The Numbers" << endl;
+	cout << "S - Display The Smallest Number" << endl;
+	cout << "L - Display The Largest Number" << endl;
+	cout << "Q - Quit" << endl;
+
+	cout << "User Input: ";
+}
+
+ 
+
+
+void mainPrompt(vector<int> myVector) {
+	showMenu();
+
+	char input{};
+	cin >> input;
+	input = toupper(input);
+
+	bool doQuit = false;
+
+	if (input == 'P') {
+		printNumbers(myVector);
+	}
+	else if (input == 'A') {
+		addNumber(myVector);
+	}
+	else if (input == 'M') {
+		calculateAverage(myVector);
+	}
+	else if (input == 'S') {
+		findSmallest(myVector);
+	}
+	else if (input == 'L') {
+		findLargest(myVector);
+	}
+	else if (input == 'Q') {
+		cout << "Quitting..." << endl;
+		doQuit = true;
+	}
+	else {
+		cout << "Invalid input - Try again" << endl << endl;
+	}
+
+	if (!doQuit) {
+		mainPrompt(myVector);
+	}
+}
+
+
+
 
 // prototyping
 	/*
@@ -183,6 +302,10 @@ int main() {
 	printArray(myScores, 6);
 */
 
+
+	// section 11 challenge (small redo of section 9)
+	vector<int> startVector{};
+	mainPrompt(startVector);
 
 	return 0;
 };
