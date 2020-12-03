@@ -70,12 +70,33 @@ void findLargest(const vector<int>& myVector) {
 	}
 }
 
+void findInt(const vector<int>& myVector) {
+	if (myVector.size() < 1) {
+		cout << "There is nothing in the list to search for." << endl << endl;
+	}
+	else {
+
+		int intToFind;
+		cout << "Enter a number to search for: ";
+		cin >> intToFind;
+		
+		if (find(myVector.begin(), myVector.end(), intToFind) != myVector.end()) {
+			cout << "The number was found" << endl << endl;
+		}
+		else {
+			cout << "The number was not found" << endl << endl;
+		}
+		
+	}
+}
+
 void showMenu() {
 	cout << "P - Print Numbers" << endl;
 	cout << "A - Add A Number" << endl;
 	cout << "M - Display Mean of The Numbers" << endl;
 	cout << "S - Display The Smallest Number" << endl;
 	cout << "L - Display The Largest Number" << endl;
+	cout << "F - Check If A Number Is In The List" << endl;
 	cout << "Q - Quit" << endl;
 
 	cout << "User Input: ";
@@ -107,6 +128,9 @@ void mainPrompt(vector<int> myVector) {
 	}
 	else if (input == 'L') {
 		findLargest(myVector);
+	}
+	else if (input == 'F') {
+		findInt(myVector);
 	}
 	else if (input == 'Q') {
 		cout << "Quitting..." << endl;
