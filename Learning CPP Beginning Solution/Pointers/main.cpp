@@ -4,9 +4,38 @@
 
 using namespace std;
 
+void double_data(int* int_ptr) {
+	*int_ptr *= 2;
+}
+
+void swap(int* a, int* b) {
+	int temp = *a; // temp is equal to the dereferenced value of a
+	*a = *b; // the address a is pointing to is equal to the dereferenced value of b
+	*b = temp; // the address b is pointing to is equal to temp (the previous dereferenced value of a)
+}
+
+void display(const vector<string>* const v) { // point to a vector of strings
+	for (auto str : *v) { // derefernce v so that we get the value it is storing
+		cout << str << " ";
+	}
+	cout << endl;
+
+	//(*v).at(0) = "Funny";
+	//v = nullptr;
+}
+
+void display(int* array, int sentinel) {
+	while (*array != sentinel) {
+		cout << *array++ << " ";
+	}
+
+	cout << endl;
+}
+
+
 int main() {
 
-// basics:
+	// basics:
 
 	/*
 	int num{ 10 };
@@ -50,7 +79,7 @@ int main() {
 
 
 
-// dereferencing (getting the value behind a pointer)
+	// dereferencing (getting the value behind a pointer)
 	/*
 	int score{ 100 };
 	int* score_ptr{ &score }; // pointer to the address of score
@@ -90,7 +119,7 @@ int main() {
 	*/
 
 
-// Dynamic Memory
+	// Dynamic Memory
 	/*
 	int* int_ptr{ nullptr };
 	int_ptr = new int; // allocates memory on the heap
@@ -188,7 +217,48 @@ int main() {
 	cout << "In the string " << name << ", " << *char_ptr2 << " is " << (char_ptr2 - char_ptr1) << " characters away from " << *char_ptr1 << endl;
 	*/
 
-	// const and pointer
+	// Passing pointers as variables
+	/*
+	int value{ 10 };
+	int* int_ptr{ nullptr };
+	cout << "Value: " << value << endl;
+
+	cout << "----------------------------------" << endl;
+	int_ptr = &value;
+	double_data(int_ptr);
+
+	cout << "Value: " << value << endl;
+
+	cout << endl;
+	*/
+	
+	// using pointers to change values instead of pass-by-refernce
+	/*
+	int x{ 100 }, y{ 200 };
+	cout << "\nx:" << x << endl;
+	cout << "y: " << y << endl;
+
+	swap(&x, &y);
+
+	cout << "\nx:" << x << endl;
+	cout << "y: " << y << endl;
+
+	cout << endl;
+	*/
+	
+	// passing pointers to vectors
+	/*
+	cout << "----------------------------------" << endl;
+	vector<string> stooges{ "larry","moe","curly" };
+
+	display(&stooges);
+
+
+	int scores[]{ 100,98,97,79,85,-1 };
+	display(scores, -1);
+	*/
+
+	// returning pointers from functions
 
 	return 0;
 }

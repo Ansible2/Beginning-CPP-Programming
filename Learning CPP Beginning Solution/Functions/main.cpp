@@ -174,7 +174,7 @@ void mainPrompt(vector<int> myVector) {
 		CPP has a pass-by-value with its params (similar to SQF in some cases such as objects, groups, arrays) by default.
 		meaning that it will get the value of the input param and copy it to a new variable or address in memory (so doubling storage)
 
-		It also means that changes to the made to the variable inside the function are to the copy of the variable and not
+		It also means that changes made to the variable inside the function are to the copy of the variable and not
 		directly to the input variable. (i'd imagine this is why pointers exist)
 
 		- Actual parameters: the input params when a function is called (whatever values you would use for int a and int b) above, also called arguments.
