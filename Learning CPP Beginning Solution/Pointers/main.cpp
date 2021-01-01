@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 
+#define DEREF_PTR *
+
 using namespace std;
 
 void double_data(int* int_ptr) {
@@ -29,6 +31,25 @@ void display(int* array, int sentinel) {
 		cout << *array++ << " ";
 	}
 
+	cout << endl;
+}
+
+
+int *createArray(size_t size, int initValue = 0) {
+	int* newStorage{ nullptr };
+	newStorage = new int[size];
+
+	for (size_t i{ 0 }; i < size; ++i) {
+		DEREF_PTR(newStorage + i) = initValue;
+	}
+
+	return newStorage;
+}
+
+void displayPartTwo(const int* const array, size_t size) {
+	for (size_t i{ 0 }; i < size; ++i) {
+		cout << array[i] << " ";
+	}
 	cout << endl;
 }
 
@@ -259,6 +280,28 @@ int main() {
 	*/
 
 	// returning pointers from functions
+	/*
+	int* myArray{ nullptr };
+	size_t size;
+	int initValue {};
+
+	cout << "\nHow many integers would you like to allocate? ";
+	cin >> size;
+	cout << "\nWhat value would you like to initialize them to? ";
+	cin >> initValue;
+
+	myArray = createArray(size, initValue);
+	cout << "----------------------------------" << endl;
+
+	displayPartTwo(myArray, size);
+	delete[] myArray;
+	*/
+
+
+	// References
+		// Not the same as a pointer. Rather, they are an alias for a variable
+		// Must be initialized to a variable
+		
 
 	return 0;
 }
