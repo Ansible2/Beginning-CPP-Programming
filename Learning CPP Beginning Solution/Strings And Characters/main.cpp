@@ -130,9 +130,31 @@ void createPyramid(string inputString) {
 	}
 };
 
+void fizzBuzz(int n) {
 
+	for (int i{ 1 }; i <= n; i++) {
+		std::string output{ "" };
+
+		if (i % 3 == 0) {
+			output += "Fizz";
+		}
+		if (i % 5 == 0) {
+			output += "Buzz";
+		}
+
+		if (output == "") {
+			std::cout << i << endl;
+		}
+		else {
+			std::cout << output << endl;
+		}
+	}
+
+}
 
 int main() {
+
+	fizzBuzz(10);
 	// c style stings
 	/*
 		char firstName[20]{};
@@ -330,6 +352,6 @@ int main() {
 	// section assignment
 	// pyramid
 	
-	createPyramid("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	//createPyramid("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	return 0;
 }

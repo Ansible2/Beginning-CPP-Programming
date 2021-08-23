@@ -54,36 +54,89 @@ void displayPartTwo(const int* const array, size_t size) {
 }
 
 
+void fizzBuzz(int n) {
+	for (int i{0}; i <= n; i++) {
+		std::string output{ "" };
+
+		if (n % 3 == 0) {
+			output += "Fizz";
+		}
+		if (n % 5 == 0) {
+			output += "Buzz";
+		}
+
+		if (output == "") {
+			std::cout << n << endl;
+		}
+		else {
+			std::cout << output << endl;
+		}
+	}
+
+}
+
+std::vector<int>* apply_all(const vector<int> &array_1, const size_t array_1_size, const vector<int> &array_2, const size_t array_2_size) {
+	std::vector<int> *returnArray = new std::vector<int>(array_1_size * array_2_size);
+	
+	int index{ 0 };
+	for (auto i : array_2) {
+		for (auto j : array_1) {
+			returnArray->at(index) = i * j;
+			index++;
+		}
+	}
+
+
+	return returnArray;
+}
+
+void print_array(const std::vector<int>* array_to_print) {
+	for (auto i : *array_to_print) {
+		cout << i << endl;
+	}
+}
+
+
 int main() {
 
-	// basics:
+	//fizzBuzz(10);
 
-	/*
+	// basics:
+/*
 	int num{ 10 };
 	cout << "Value of num is: " << num << endl;
 	cout << "sizeOf num is: " << sizeof num << endl;
 	cout << "The address of num is: " << &num << endl;
 
 	int* p;
-	//cout << "\nValue of p is: " << p << endl;
+	//cout << "\nValue of p is: " << p << endl; // unInitialized point error or garbage
 	cout << "The address of p is: " << &p << endl;
 	cout << "The sizeOf p is: " << sizeof p << endl;
 
-
 	p = nullptr;
 	cout << "\nValue of p is: " << p << endl;
-	*/
+*/	
 
-	/*
+
+	// Size of pointers is constant no matter what they are pointing to 
+/*
 	// all have the same size in memory
 	int* p1{ nullptr };
 	double* p2{ nullptr };
 	unsigned long long* p3{ nullptr };
 	vector<string>* p4{ nullptr };
 	string* p5{ nullptr };
-	*/
+	
+	cout << "sizeOf p1 is: " << sizeof p1 << endl;
+	cout << "sizeOf p2 is: " << sizeof p2 << endl;
+	cout << "sizeOf p3 is: " << sizeof p3 << endl;
+	cout << "sizeOf p4 is: " << sizeof p4 << endl;
+	cout << "sizeOf p5 is: " << sizeof p5 << endl;
+*/
 
-	/*
+
+	// pointers store memory address
+/*
 	int score{ 10 };
 	double highTemp{ 100.7 };
 
@@ -93,27 +146,27 @@ int main() {
 
 	cout << "The value of score is: " << score << endl;
 	cout << "The address of score is: " << &score << endl;
-	cout << "Value of score_ptr isL " << score_ptr << endl;
+	cout << "Value of score_ptr is " << score_ptr << endl;
 
-	score_ptr = &highTemp; // error, can't convert a pointer of one type to a pointer of another type despite them just being pointers
-	*/
-
+	//score_ptr = &highTemp; // error, can't convert a pointer of one type to a pointer of another type despite them just being pointers
+*/
 
 
 	// dereferencing (getting the value behind a pointer)
-	/*
+/*
 	int score{ 100 };
 	int* score_ptr{ &score }; // pointer to the address of score
 
 	cout << *score_ptr << endl; // get value behind score_ptr (dereference)
 
-	*score_ptr = 200; // assign the adress of score_ptr the value of 200
+	DEREF_PTR score_ptr = 200; // assign the adress of score_ptr the value of 200; e.g. score is now 200
 
 	cout << *score_ptr << endl;
 	cout << score << endl;
-	*/
+*/
 
-	/*
+
+/*
 	double highTemp{ 100.7 };
 	double lowTemp{ 37.4 };
 	double* temp_ptr{ &highTemp };
@@ -121,9 +174,9 @@ int main() {
 	cout << *temp_ptr << endl;
 	temp_ptr = &lowTemp;
 	cout << *temp_ptr << endl;
-	*/
+*/
 	
-	/*
+/*
 	vector<string> stooges{ "Larry","Moe","Curly" };
 	vector<string>* vector_ptr{ nullptr };
 
@@ -137,11 +190,11 @@ int main() {
 		cout << stooge << " ";
 	}
 	cout << endl << endl;
-	*/
+*/
 
 
 	// Dynamic Memory
-	/*
+/*
 	int* int_ptr{ nullptr };
 	int_ptr = new int; // allocates memory on the heap
 	cout << int_ptr << endl;
@@ -157,10 +210,10 @@ int main() {
 	delete[] temp_ptr;
 
 	cout << endl;
-	*/
+*/
 
 	// arrays and pointers
-	/*
+/*
 	int scores[] { 100,95,89 };
 
 	cout << "Value of scores: " << scores << endl;
@@ -189,10 +242,10 @@ int main() {
 	cout << *scores << endl; // get the first memory location of the array
 	cout << *(scores + 1) << endl; // get memory location and add the storage value of 1 int
 	cout << *(scores + 2) << endl; // add storage value of 2 ints and then get what that memory address is pointing to
-	*/
+*/
 
 	// pointer arithmetic
-	/*
+/*
 	int scores[]{ 100,95,89,68,-1 }; // -1 is a sentinel value that marks the end of our array
 	int* score_ptr{ scores };
 
@@ -236,10 +289,10 @@ int main() {
 	char_ptr2 = &name[3];
 
 	cout << "In the string " << name << ", " << *char_ptr2 << " is " << (char_ptr2 - char_ptr1) << " characters away from " << *char_ptr1 << endl;
-	*/
+*/
 
 	// Passing pointers as variables
-	/*
+/*
 	int value{ 10 };
 	int* int_ptr{ nullptr };
 	cout << "Value: " << value << endl;
@@ -251,10 +304,10 @@ int main() {
 	cout << "Value: " << value << endl;
 
 	cout << endl;
-	*/
+*/
 	
 	// using pointers to change values instead of pass-by-refernce
-	/*
+/*
 	int x{ 100 }, y{ 200 };
 	cout << "\nx:" << x << endl;
 	cout << "y: " << y << endl;
@@ -265,10 +318,10 @@ int main() {
 	cout << "y: " << y << endl;
 
 	cout << endl;
-	*/
+*/
 	
 	// passing pointers to vectors
-	/*
+/*
 	cout << "----------------------------------" << endl;
 	vector<string> stooges{ "larry","moe","curly" };
 
@@ -277,10 +330,10 @@ int main() {
 
 	int scores[]{ 100,98,97,79,85,-1 };
 	display(scores, -1);
-	*/
+*/
 
 	// returning pointers from functions
-	/*
+/*
 	int* myArray{ nullptr };
 	size_t size;
 	int initValue {};
@@ -295,13 +348,31 @@ int main() {
 
 	displayPartTwo(myArray, size);
 	delete[] myArray;
-	*/
+*/
 
 
 	// References
 		// Not the same as a pointer. Rather, they are an alias for a variable
 		// Must be initialized to a variable
 		
+	
+	
+	// section challenge
+	
+	std::vector<int> array_1{ 1,2,3,4,5 };
+	std::vector<int> array_2{ 10,20,30 };
+
+	cout << "Array 1:" << endl;
+	print_array(&array_1);
+
+	cout << "Array 2:" << endl;
+	print_array(&array_2);
+
+	auto new_array = apply_all(array_1,array_1.size(),array_2,array_2.size());
+
+	cout << "Array New:" << endl;
+	print_array(new_array);
+	delete new_array;
 
 	return 0;
 }
