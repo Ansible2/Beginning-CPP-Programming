@@ -140,14 +140,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="ConstPlayer.cpp" />
     <ClCompile Include="Deep.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Shallow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="ConstPlayer.h" />
     <ClInclude Include="Deep.h" />
+    <ClInclude Include="Move.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Shallow.h" />
   </ItemGroup>

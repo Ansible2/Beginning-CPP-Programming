@@ -26,11 +26,8 @@ public:
 */
     Player(); // prototype function
     Player(const Player&);
-    Player(std::string name_val, int health_val, int xp_val) {
-        name = name_val;
-        health = health_val;
-        xp = xp_val;
-    }
+    Player(std::string name_val);
+    Player(std::string name_val, int health_val, int xp_val);
 
 
 
