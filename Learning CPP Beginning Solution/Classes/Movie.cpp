@@ -8,8 +8,12 @@ Movie::Movie(string& nameOfMovie, movieRating ratingofMovie)
 	: name{ nameOfMovie }, rating{ ratingofMovie }, numberOfTimesWatched{ 0 } {
 }
 
-Movie::Movie(string& nameOfMovie, movieRating ratingofMovie, int timesWatched)
-	: name{ nameOfMovie }, rating{ ratingofMovie }, numberOfTimesWatched{ timesWatched } {
+Movie::Movie(string& nameOfMovie, int timesWatched)
+	: name{ nameOfMovie }, rating{ movieRating::unrated }, numberOfTimesWatched{ timesWatched } {
+}
+
+Movie::Movie(string& nameOfMovie, int timesWatched, movieRating ratingofMovie)
+	: name{ nameOfMovie }, numberOfTimesWatched{ timesWatched }, rating{ ratingofMovie } {
 }
 
 
@@ -30,8 +34,15 @@ movieRating Movie::get_movie_rating() {
 }
 
 void Movie::set_times_watched(int numberOfTimes) {
+	if (numberOfTimes < 0)
+	{
+		numberOfTimes = 0;
+	}
+		
 	numberOfTimesWatched = numberOfTimes;
 }
 int Movie::get_times_watched() {
 	return numberOfTimesWatched;
 }
+
+

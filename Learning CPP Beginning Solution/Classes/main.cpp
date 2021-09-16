@@ -22,6 +22,30 @@ void display_object(Shallow source) {
 }
 
 
+string enum_to_string(movieRating type) {
+    switch (type) {
+
+        case movieRating::unrated: {
+            return "unrated";
+        }
+        case movieRating::G: {
+            return "G";
+        }
+        case movieRating::PG: {
+            return "PG";
+        }
+        case movieRating::PG13: {
+            return "PG-13";
+        }
+        case movieRating::R: {
+            return "R";
+        }
+        default: {
+            return "unrated";
+        }
+    }
+}
+
 // structs are the same as classes functionally. However, the members of classes are private by default whereas in structs they are public
 // structs are fine for passive public data; classes should be used for specific objects with getter & setter methods (these are general guidlines)
 
@@ -129,14 +153,27 @@ int main()
 
 
     // section challenge
-    Movie missionImpossibleMovie{ "Mission Impossible", movieRating::R, 1 };
-    Movies missionImpossibleMovieCollection{};
-    auto inserted = missionImpossibleMovieCollection.emplace(missionImpossibleMovie);
-    
-    cout << std::boolalpha;
-    cout << missionImpossibleMovieCollection.contains(missionImpossibleMovie);
-    
+    Movies my_movies;
+    my_movies.print_movies();
 
+    my_movies.add_movie("Big",2,movieRating::PG13);
+    my_movies.add_movie("Star Wars", 5, movieRating::PG);
+    my_movies.add_movie("Cinderella", 7, movieRating::PG);
+
+    my_movies.print_movies();
+
+    my_movies.add_movie("Cinderella", 7, movieRating::PG);
+    my_movies.add_movie("Ice Age", 12, movieRating::PG);
+
+    my_movies.print_movies();
+
+
+    my_movies.erase("Cinderella");
+    my_movies.erase("Hello");
+
+    my_movies.adjust_watch("Star Wars", 5);
+
+    my_movies.print_movies();
 
     return 0;
 }

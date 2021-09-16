@@ -10,7 +10,6 @@ enum class movieRating {
 	unrated, G, PG, PG13, R
 };
 
-
 class Movie
 {
 private:
@@ -21,7 +20,8 @@ private:
 public:
 	Movie(string& nameOfMovie);
 	Movie(string& nameOfMovie, movieRating ratingofMovie);
-	Movie(string& nameOfMovie, movieRating ratingofMovie, int numberOfTimesWatched);
+	Movie(string& nameOfMovie, int numberOfTimesWatched, movieRating ratingofMovie );
+	Movie(string& nameOfMovie, int numberOfTimesWatched);
 
 	void set_movie_name(string&& nameOfMovie);
 	string& get_movie_name();
