@@ -73,7 +73,7 @@ void Movies::adjust_watch(string title,int incriment) {
 		movie->set_times_watched(timesWatched);
 
 		timesWatched = movie->get_times_watched();
-		cout << "Set number of times watched movie: " + title + " to: " + char(timesWatched) << endl;
+		cout << "Set number of times watched movie: " + title + " to: " + std::to_string(timesWatched) << endl;
 	}
 	else {
 		cout << title + " was not found inside this collection" << endl;
@@ -94,8 +94,8 @@ bool Movies::contains(string& nameOfMovie) {
 	return collection->count(nameOfMovie);
 }
 
-string enum_to_string(movieRating rating);
 
+string enum_to_string(movieRating rating);
 void Movies::print_movies() {
 	cout << endl;
 	cout << "==============================" << endl;
@@ -108,7 +108,7 @@ void Movies::print_movies() {
 
 		for (const auto& key_value : *collection) {
 			Movie* movie{ key_value.second };
-			cout << movie->get_movie_name() + ", " + enum_to_string(movie->get_movie_rating()) + ", " + char(movie->get_times_watched()) << endl;
+			cout << movie->get_movie_name() + ", " + enum_to_string(movie->get_movie_rating()) + ", " + std::to_string(movie->get_times_watched()) << endl;
 		}
 	}
 	
