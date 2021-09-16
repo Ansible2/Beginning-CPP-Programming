@@ -144,6 +144,8 @@
     <ClCompile Include="Deep.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Move.cpp" />
+    <ClCompile Include="Movie.cpp" />
+    <ClCompile Include="Movies.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Shallow.cpp" />
   </ItemGroup>
@@ -152,6 +154,8 @@
     <ClInclude Include="ConstPlayer.h" />
     <ClInclude Include="Deep.h" />
     <ClInclude Include="Move.h" />
+    <ClInclude Include="Movie.h" />
+    <ClInclude Include="Movies.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Shallow.h" />
   </ItemGroup>

@@ -1,11 +1,15 @@
 #include <iostream>
 #include <vector>
+
 #include "Account.h"
 #include "Player.h"
 #include "Shallow.h"
 #include "Deep.h"
 #include "Move.h"
 #include "ConstPlayer.h"
+
+#include "Movies.h"
+
 
 using std::cout;
 using std::endl;
@@ -121,6 +125,18 @@ int main()
 
     villain.get_name();
 */
+
+
+
+    // section challenge
+    Movie missionImpossibleMovie{ "Mission Impossible", movieRating::R, 1 };
+    Movies missionImpossibleMovieCollection{};
+    auto inserted = missionImpossibleMovieCollection.emplace(missionImpossibleMovie);
+    
+    cout << std::boolalpha;
+    cout << missionImpossibleMovieCollection.contains(missionImpossibleMovie);
+    
+
 
     return 0;
 }
